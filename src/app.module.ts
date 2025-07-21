@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import { TraceMiddleware } from '@/middleware/tracing.middleware';
+import { HttpModule } from '@nestjs/axios';
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ThrottlerModule, ThrottlerModuleOptions } from '@nestjs/throttler';
@@ -11,6 +12,7 @@ import { AppController } from './modules/app.controller';
   controllers: [AppController],
   providers: [],
   imports: [
+    HttpModule,
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env',
